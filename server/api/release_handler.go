@@ -764,6 +764,8 @@ func (app *App) HandleGetReleaseToken(w http.ResponseWriter, r *http.Request) {
 			Code:   ErrReleaseReadData,
 			Errors: []string{"release not found"},
 		}, w)
+
+		return
 	}
 
 	release, err := app.Repo.Release.ReadRelease(uint(clusterID), name, namespace)
@@ -773,6 +775,8 @@ func (app *App) HandleGetReleaseToken(w http.ResponseWriter, r *http.Request) {
 			Code:   ErrReleaseReadData,
 			Errors: []string{"release not found"},
 		}, w)
+
+		return
 	}
 
 	releaseExt := release.Externalize()
